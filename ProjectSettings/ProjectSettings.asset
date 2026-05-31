@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: ef213672e390ed24a8c5245d222db529
+  productGUID: 27d56dc4f900f7f4cbfd7a3b0e5b4ebc
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: GroupDungeon
+  productName: Chudgeon
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -524,7 +524,10 @@ PlayerSettings:
       m_Height: 720
       m_Kind: 1
       m_SubKind: 
-  m_BuildTargetBatching: []
+  m_BuildTargetBatching:
+  - m_BuildTarget: Standalone
+    m_StaticBatching: 1
+    m_DynamicBatching: 0
   m_BuildTargetShaderSettings: []
   m_BuildTargetGraphicsJobs: []
   m_BuildTargetGraphicsJobMode: []
@@ -846,14 +849,14 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: GroupDungeon
+  metroPackageName: Chudgeon
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: GroupDungeon
+  metroApplicationDescription: Chudgeon
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -924,11 +927,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 5bbafc12-6ee8-443b-bdaa-ed7ab017548d
+  cloudProjectId: 9d805876-7b40-4ea2-8ac2-47c569093313
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: GroupDungeon
-  organizationId: jellykat83
+  projectName: Chudgeon 2026-05-31_22-55-01
+  organizationId: unity_51554cd56e63aafb3540
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

@@ -53,7 +53,7 @@ public class Bryceder : MonoBehaviour
         // Stop chasing if player is too far
         else if (chasing)
         {
-            if (playerDistance > detectDistance * 2)
+            if (playerDistance > detectDistance * 1.5)
             {
                 chasing = false;
             }
