@@ -7,6 +7,7 @@ public class CameraController : MonoBehaviour
     public float constrainUp;       // How far camera can move up
     public float constrainDown;     // How far camera can move down
     public Transform player;        // Player's transform
+    public GameObject editorOnly;    // Container for editor only objects
 
     private float rotationH;
     private float rotationV;
@@ -17,6 +18,10 @@ public class CameraController : MonoBehaviour
         // Set initial rotation values to camera's current rotation values
         rotationH = transform.localEulerAngles.y;
         rotationV = transform.localEulerAngles.x;
+
+        // Disable editor only objects. This should be done by them just having the tag afaik but it just doesn't work
+        // This should probably be in a game manager script but that doesn't exist when I made this and I bet nobody will be bothered to move this
+        editorOnly.SetActive(false);
     }
 
     // Update is called once per frame

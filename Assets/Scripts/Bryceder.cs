@@ -6,6 +6,7 @@ public class Bryceder : MonoBehaviour
     public float wanderRange = 15f;     // How far enemy moves
     public float stoppingDistance = 5f; // How early enemy stops
     public float detectDistance = 5f;   // How far player needs to be to escape range
+    public LayerMask layerMask;         // Layer bryceder will look for to chase player
 
     public GameObject player;       // Tracks player
 
@@ -13,14 +14,12 @@ public class Bryceder : MonoBehaviour
     private NavMeshAgent agent;
     protected bool chasing;
     private float playerDistance;
-    private LayerMask layerMask;
 
     void Start()
     {
         // Set variables
         playerTransform = player.GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
-        layerMask = LayerMask.GetMask("Player");
     }
 
     // Update is called once per frame
@@ -28,6 +27,16 @@ public class Bryceder : MonoBehaviour
     {
         // Get how far player is
         playerDistance = Vector3.Distance(player.transform.position, transform.position);
+
+        // Enemy sight handler
+        Vector3 raycastOrigin = transform.position;
+        raycastOrigin.y += 0.5f;
+        // Shoot raycast out and if it hits player start chase
+        if (Physics.Raycast(raycastOrigin, transform.forward, out RaycastHit hit, detectDistance, layerMask, QueryTriggerInteraction.Ignore))
+        {
+            chasing = true;
+            Debug.Log("Found player");
+        }
 
         // Wander while not chasing
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance && !chasing)
@@ -44,22 +53,12 @@ public class Bryceder : MonoBehaviour
         // Stop chasing if player is too far
         else if (chasing)
         {
-            if (playerDistance > detectDistance)
+            if (playerDistance > detectDistance * 2)
             {
                 chasing = false;
             }
+            agent.SetDestination(playerTransform.position);
+            agent.stoppingDistance = 0f;
         }
-
-        // Enemy sight handler
-        RaycastHit hit;
-        Vector3 raycastOrigin = transform.position;
-        raycastOrigin.y += 0.5f;
-        // Shoot raycast out and if it hits player start chase
-        if (Physics.Raycast(raycastOrigin, transform.TransformDirection(Vector3.forward), out hit, detectDistance, layerMask))
-        {
-            chasing = true;
-            Debug.Log("Found player");
-        }
-        Debug.DrawRay(raycastOrigin, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
     }
 }
