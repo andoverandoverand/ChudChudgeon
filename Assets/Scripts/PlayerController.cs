@@ -4,6 +4,8 @@ public class PlayerController : MonoBehaviour
 {
     public GameObject gameOverScreen;
 
+    public int energies = 0;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,6 +23,10 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             gameOverScreen.SetActive(true);
+        }
+        if (other.gameObject.tag == "Energy")
+        {
+            energies++;
         }
     }
 }
